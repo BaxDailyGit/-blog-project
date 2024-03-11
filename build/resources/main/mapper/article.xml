@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.estsoft.blogproject.repository.ArticleMapper">
+    <select id="selectAllArticles" resultType="com.estsoft.blogproject.domain.Article">
+        SELECT a.*
+        FROM article a
+    </select>
+
+    <select id="selectOneArticle" parameterType="Long" resultType="com.estsoft.blogproject.domain.Article">
+        SELECT *
+        FROM article
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insertOneArticle" parameterType="com.estsoft.blogproject.domain.Article" useGeneratedKeys="true">
+        INSERT INTO article (title, content) VALUES (#{title}, #{content})
+    </insert>
+
+    <update id="updateOneArticle" parameterType="com.estsoft.blogproject.domain.Article">
+        UPDATE article
+        SET title = #{title}, content = #{content}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteOneArticle" parameterType="Long">
+        DELETE FROM article WHERE id = #{id}
+    </delete>
+</mapper>
